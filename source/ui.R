@@ -1,10 +1,6 @@
 
 library(shiny)
 
-
-
-
-
 shinyUI(fluidPage(
   
   titlePanel("Time Series Analysis"),

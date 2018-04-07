@@ -6,8 +6,22 @@
 # 
 #    http://shiny.rstudio.com/
 #
-
-library(shiny)
+if(!require(shiny)){
+  install.packages("shiny")
+  library(shiny)
+}
+if(!require(RMongo)){
+  install.packages("RMongo")
+  library(RMongo)
+}
+if(!require(shiny)){
+  install.packages("shiny")
+  library(shiny)
+}
+if(!require(RMongo)){
+  install.packages("RMongo")
+  library(RMongo)
+}
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
