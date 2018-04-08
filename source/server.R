@@ -6,21 +6,32 @@
 # 
 #    http://shiny.rstudio.com/
 #
+if(!require(shiny)){
+  install.packages("shiny")
+  library(shiny)
+}
+if(!require(RMongo)){
+  install.packages("RMongo")
+  library(RMongo)
+}
 
-library(shiny)
+mg1<-reactiveVal()
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
-   shiny::observeEvent(input$mybutton,{
+   observeEvent(input$mybutton,{
      if (input$dbType == "Mongo DB") {
      mg1 <- mongoDbConnect(dbName = input$dbNameInput,host = input$hostNameInput,port = input$portNameInput)
      print(dbShowCollections(mg1))
+     dbDisconnect(rmongo.object = mg1)
      showNotification(ui = 'connecting')
      }
      else{
        showNotification(ui = "Haven't configured that db yet")
      }
    })
- 
-    
+  onStop(function() {
+    dbDisconnect(rmongo.object = mg1)
   })
+  }
+  )

@@ -5,7 +5,7 @@ library(shiny)
 
 
 
-shinyUI(fluidPage(
+shinyUI(fluidPage(theme = 'bootstrap.css',
   
   titlePanel("Time Series Analysis"),
   
