@@ -15,8 +15,6 @@ if(!require(RMongo)){
   library(RMongo)
 }
 
-mg1<-reactiveVal()
-
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
    observeEvent(input$mybutton,{
@@ -30,8 +28,9 @@ shinyServer(function(input, output) {
        showNotification(ui = "Haven't configured that db yet")
      }
    })
-  onStop(function() {
-    dbDisconnect(rmongo.object = mg1)
-  })
   }
   )
+
+onStop(function() {
+  dbDisconnect(rmongo.object = mg1)
+})

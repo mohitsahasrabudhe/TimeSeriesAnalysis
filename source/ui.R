@@ -3,10 +3,8 @@ library(shiny)
 
 
 
-
-
 shinyUI(fluidPage(theme = 'bootstrap.css',
-  
+
   titlePanel("Time Series Analysis"),
   
     mainPanel(
