@@ -15,22 +15,60 @@ if(!require(RMongo)){
   library(RMongo)
 }
 
-# Define server logic required to draw a histogram
-shinyServer(function(input, output) {
-   observeEvent(input$mybutton,{
-     if (input$dbType == "Mongo DB") {
-     mg1 <- mongoDbConnect(dbName = input$dbNameInput,host = input$hostNameInput,port = input$portNameInput)
-     print(dbShowCollections(mg1))
-     dbDisconnect(rmongo.object = mg1)
-     showNotification(ui = 'connecting')
-     }
-     else{
-       showNotification(ui = "Haven't configured that db yet")
-     }
-   })
-  }
-  )
 
-onStop(function() {
-  dbDisconnect(rmongo.object = mg1)
-})
+shinyServer(function(input, output,session) 
+{
+  
+  output$myshittycoding<-renderText(input$hasHeadersInput)
+  
+  #Session Details
+  sessionId <- as.integer(runif(1, 1, 100000))
+  output$sessionId <- renderText(paste0("Session ID: ", sessionId))
+  session$onSessionEnded(function() {
+    cat(paste0("Ended: ", sessionId))
+    #dbDisconnect(rmongo.object = mongoConnection)
+  })
+  
+  output$timeSeriesTable<-renderDataTable(timeSeriesData())
+  observeEvent(input$show, {
+    showModal(dataModal())
+  })
+  
+  #Connect to database
+  # observeEvent(input$dataBaseConnect,{
+  #   if (input$dbType == "Mongo DB") {
+  #     showNotification(ui = 'connecting')
+  #     tryCatch(mongoConnection <- mongoDbConnect(dbName = input$dbNameInput,
+  #                                                host = input$hostNameInput,
+  #                                                port = input$portNameInput),
+  #              error=function(error_message)
+  #              {
+  #                print(error_message)
+  #              }
+  #     )
+  #   }
+  #   else{
+  #     showNotification(ui = "Haven't configured that db yet")
+  #   }
+  # }
+  # )
+
+  dataModal <- function(failed = FALSE) {
+    modalDialog(
+      dataTableOutput("timeSeriesTable")
+      )
+  }
+  
+  #Create time series definition
+  #The reactive timeseries variable
+  timeSeriesData <- reactive({
+    inFile <- input$csvInput
+    if (is.null(inFile)) return(NULL)
+    data <- read.csv(inFile$datapath, header = TRUE)
+    data
+  })
+  
+  
+  }
+)
+
