@@ -1,0 +1,16 @@
+if(!require(shiny)){
+  install.packages("shiny")
+  library(shiny)
+}
+if(!require(RMongo)){
+  install.packages("RMongo")
+  library(RMongo)
+}
+if(!require(parsedate)){
+  install.packages("parsedate")
+  library(parsedate)
+}
+if(!require(shinydashboard)){
+  install.packages("shinydashboard")
+  library(shinydashboard)
+}

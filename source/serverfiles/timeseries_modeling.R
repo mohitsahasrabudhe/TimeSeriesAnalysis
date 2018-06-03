@@ -18,25 +18,44 @@ shinyServer(function(input, output,session)
   #Source Session Details
   source('serverfiles/global/session_details.R',local=TRUE)
   
-  #Source Session Details
-  source('serverfiles/data_load.R',local=TRUE)
-  
- 
   output$timeSeriesTable<-renderDataTable(timeSeriesData())
-  
   observeEvent(input$show, {
     showModal(popupData())
   })
+  
+  #Connect to database
+  # observeEvent(input$dataBaseConnect,{
+  #   if (input$dbType == "Mongo DB") {
+  #     showNotification(ui = 'connecting')
+  #     tryCatch(mongoConnection <- mongoDbConnect(dbName = input$dbNameInput,
+  #                                                host = input$hostNameInput,
+  #                                                port = input$portNameInput),
+  #              error=function(error_message)
+  #              {
+  #                print(error_message)
+  #              }
+  #     )
+  #   }
+  #   else{
+  #     showNotification(ui = "Haven't configured that db yet")
+  #   }
+  # }
+  # )
   
   popupData <- function(failed = FALSE) {
     modalDialog(
       dataTableOutput("timeSeriesTable")
     )
   }
- 
   
-  
-  
+  # Create time series definition
+  # The reactive timeseries variable
+  # timeSeriesData <- reactive({
+  #   inFile <- input$csvInput
+  #   if (is.null(inFile)) return(NULL)
+  #   data <- read.csv(inFile$datapath, header = TRUE)
+  #   data
+  # })
   
   output$timeVariable<-renderUI({
     selectInput(
