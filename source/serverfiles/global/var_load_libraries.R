@@ -10,7 +10,3 @@ if(!require(parsedate)){
   install.packages("parsedate")
   library(parsedate)
 }
-if(!require(shinydashboard)){
-  install.packages("shinydashboard")
-  library(shinydashboard)
-}

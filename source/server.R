@@ -10,19 +10,19 @@
 shinyServer(function(input, output,session) 
 {
   #Loading Libraries
-  source('serverfiles/global/load_libraries.R',local=TRUE)
+  source('serverfiles/global/var_load_libraries.R',local=TRUE)
   
   #Sourcing Global ariables
-  source('serverfiles/global/global_variables.R',local=TRUE)
+  source('serverfiles/global/var_global_variables.R',local=TRUE)
   
   #Source Session Details
-  source('serverfiles/global/session_details.R',local=TRUE)
+  source('serverfiles/global/var_session_details.R',local=TRUE)
   
   #Source Session Details
-  source('serverfiles/data_load.R',local=TRUE)
+  source('serverfiles/server1_data_load.R',local=TRUE)
   
  
-  output$timeSeriesTable<-renderDataTable(timeSeriesData())
+  output$loadedCSVData<-renderDataTable(loadedCSVData())
   
   observeEvent(input$show, {
     showModal(popupData())
@@ -30,7 +30,7 @@ shinyServer(function(input, output,session)
   
   popupData <- function(failed = FALSE) {
     modalDialog(
-      dataTableOutput("timeSeriesTable")
+      dataTableOutput("loadedCSVData")
     )
   }
  
