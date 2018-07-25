@@ -1,9 +1,9 @@
 tabPanel("Create Time Series",
-                       sidebarPanel(
-                         
-                       ),
-                       mainPanel(
-                         uiOutput("dependentTSVariable"),
-                         
-                         uiOutput("timeVariable")
-                       ))
+         dashboardPage(
+           dashboardHeader(),
+           dashboardSidebar(
+           ),
+           dashboardBody()
+         )
+)
+
