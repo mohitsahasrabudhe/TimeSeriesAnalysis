@@ -15,10 +15,7 @@ shinyServer(function(input, output,session)
   #Source Data Load
   source('serverfiles/server_data_load.R',local=TRUE)
   
-  
-  observeEvent(input$clickbox,{
-  output$sampletext<-renderText("Hi")})
-
 }
 )
 
+  

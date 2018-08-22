@@ -21,26 +21,28 @@ removeDataStreamRender <-function() {
   
   output$dataStreamList<-renderMenu({
     sidebarMenu(
+      #list files should be replaced with whatever db we are connecting to
       lapply(list.files(path = "savefiles"), function(savefiles) {
         
         menuItem(text = savefiles,
                  tabName = savefiles,
                  id=paste0("dataStreamDate",savefiles),
-                 icon = icon("download"),
+                 
                  
                  lapply(list.files(path = paste0("savefiles//",savefiles)), function(dateFile) {
                    
                    menuItem(text=dateFile,
                             # tabName = dateFile,
                             id=paste0("dataStreamDateTime",dateFile),
-                            icon = icon("download"),
                             
                             lapply(list.files(path = paste0("savefiles//",savefiles,"//",dateFile)), function(dateTimeFile) {
                               
                               menuItem(text=dateTimeFile,
                                        # tabName = dateTimeFile,
                                        id=paste0("dataStreamDate",savefiles),
-                                       icon = icon("download"))
+                                       icon = icon("table"),
+                                       menuSubItem("Edit")
+                              )
                             }
                             ))
                  }
@@ -49,17 +51,16 @@ removeDataStreamRender <-function() {
       id="dataStreamSidebarMenu"
     )
   })
-  
 }
 
-
-
-observe(
-  output$selectSideBar <- renderUI({
-    HTML(
-      paste(
-        "The selected tab/subtab is", 
-        tags$h3(input$dataStreamSidebarMenu)
-      )
-    )
-  }))
+# 
+# 
+# observe(
+#   output$selectSideBar <- renderUI({
+#     HTML(
+#       paste(
+#         "The selected tab/subtab is", 
+#         tags$h3(input$dataStreamSidebarMenu)
+#       )
+#     )
+#   }))

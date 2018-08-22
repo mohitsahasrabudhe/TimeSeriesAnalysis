@@ -18,3 +18,10 @@ if(!require(shinyjs)){
 }else{
   library(shinyjs)
 }
+
+if(!require(DT)){
+  install.packages("DT")
+  library(DT)
+}else{
+  library(DT)
+}

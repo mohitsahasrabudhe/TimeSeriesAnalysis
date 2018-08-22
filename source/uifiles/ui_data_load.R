@@ -10,7 +10,9 @@ tabPanel("Data Load",
              )
            ),
            dashboardBody(
-             uiOutput("selectSideBar")
+             fillRow(dataTableOutput("displayDataStream"),
+                     actionButton("deleteDataStream",label = "Delete")
+             )
            )
          )
 )
