@@ -10,31 +10,23 @@ observeEvent(
     #This part has to move external, so that we read only the Rdata files
     #Create a folder scheme -> User given name -> User created date -> User created time
     
-    dir.create(path = paste0("savefiles//",
+    dir.create(path = paste0("savefiles//datasource//",
                              input$dataSourceName,"//"),showWarnings = F)
-    dir.create(path = paste0("savefiles//",
+    dir.create(path = paste0("savefiles//datasource//",
                              input$dataSourceName,"//",
                              input$dataSourceName,"_",Sys.Date()),showWarnings = F)
     write.csv(as.data.frame(loadedCSVData()),
-              file=paste0("savefiles//",
+              file=paste0("savefiles//datasource//",
                           input$dataSourceName,"//",
                           input$dataSourceName,"_",Sys.Date(),"//",
                           input$dataSourceName,"_",format(Sys.time(),"%H-%M-%S"),".csv"),
-              col.names=input$hasHeadersInput)
+              col.names=input$hasCSVHeadersInput)
     
-    # read.csv(paste0("savefiles//",
-    #                 input$dataSourceName,"//",
-    #                 input$dataSourceName,"_",Sys.Date(),"//",
-    #                 input$dataSourceName,"_",format(Sys.time(),"%H-%M-%S"),".csv"))
-    # lapply(list.files(path = paste0("savefiles//",input$dataSourceName)), function(dateFile) {
-    #   lapply(list.files(path = paste0("savefiles//",input$dataSourceName,"//",dateFile)), function(dateTimeFile) {
-    #     read.csv(paste0("savefiles//",input$dataSourceName,"//",dateFile,"//",dateTimeFile))
-    #   })
-    # })
   
     removeDataStreamRender()
   }
 )
+
 
 
 

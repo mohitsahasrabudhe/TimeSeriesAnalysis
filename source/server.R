@@ -1,11 +1,4 @@
-#
-# This is the server logic of a Shiny web application. You can run the 
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
+
 
 shinyServer(function(input, output,session) 
 {
@@ -15,6 +8,8 @@ shinyServer(function(input, output,session)
   #Source Data Load
   source('serverfiles/server_data_load.R',local=TRUE)
   
+  #Source Data Load
+  source('serverfiles/server_create_timeseries.R',local=TRUE)
 }
 )
 

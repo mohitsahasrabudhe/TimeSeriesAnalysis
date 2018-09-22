@@ -1,5 +1,3 @@
-
-
 tabPanel("Data Load",
          dashboardPage(
            dashboardHeader(),
@@ -10,9 +8,7 @@ tabPanel("Data Load",
              )
            ),
            dashboardBody(
-             fillRow(dataTableOutput("displayDataStream"),
-                     actionButton("deleteDataStream",label = "Delete")
-             )
+             dataTableOutput("selectedDataSet")
            )
          )
 )

@@ -25,3 +25,10 @@ if(!require(DT)){
 }else{
   library(DT)
 }
+
+if(!require(rhandsontable)){
+  install.packages("rhandsontable")
+  library(rhandsontable)
+}else{
+  library(rhandsontable)
+}
