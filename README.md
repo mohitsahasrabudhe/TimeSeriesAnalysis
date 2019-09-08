@@ -1,2 +1,3 @@
 # TimeSeriesAnalysis
-This is a project that will help quickly deploy timeseries models and display dashboards.
+A dynamic dashboard that build ARIMA, ETS and Decomposition Time Series forecasting models.
+This dashboard is build using RShiny, JavaScript and Jquery.
