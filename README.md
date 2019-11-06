@@ -8,6 +8,24 @@ The first draft of the trial version workflow is as follows -
 4) It then saves the data and the forecasts and provides the user an interface to download the forecasts
 
 The full version is intended to provide support in the data preparation and machine learning models like the LSTM, Random Forest and other regression techniques for forecasting
+# File Structure
+	
+      rsconnect/shinyapps.io/mohitsahasrabudhe      Used to connect to shinyapps.io
+
+      savefiles/datasource	                        This is a temporary persistent data storage of the data streams
+
+      serverfiles	                                  The serverfiles contain the backend of our system
+
+      uifiles	                                      The uifiles contain the frontend of our system
+
+      www	                                          Contains the Javascript and Jquery
+
+      global.R	                                    Responsible for the library installations and other global actions
+    
+      server.R	                                    Main page of the server which connects to other pages in serverfiles
+    
+      ui.R	                                        Main page of the ui which connects to other pages in uifiles
+
 
 # Workflow
 The workflow for a client can be found in the attached pdf: 
