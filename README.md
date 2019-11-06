@@ -11,7 +11,9 @@ The full version is intended to provide support in the data preparation and mach
 
 # Workflow
 The workflow for a client can be found in the attached pdf: 
+
 Load Data
+
 New Project Workflow
 
 # Technical Specifications
