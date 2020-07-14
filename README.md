@@ -36,4 +36,4 @@ New Project Workflow
 
 # Technical Specifications
 A dynamic dashboard that build ARIMA, ETS and Decomposition Time Series forecasting models.
-This dashboard is build using RShiny, JavaScript and Jquery
+This dashboard is built using RShiny, JavaScript and Jquery
